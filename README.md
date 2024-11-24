@@ -2,12 +2,16 @@
 ![image](https://github.com/user-attachments/assets/6f24d9c1-a6b8-4138-821c-e751b5aa88c4)
 ![image](https://github.com/user-attachments/assets/e2c15766-75c0-40b3-835a-313978bf1ced)
 ![image](https://github.com/user-attachments/assets/3139e1e4-9a66-4606-bf61-e19fe01a7c41)
+
 BrainInterface3D is a modular pipeline incorporating multiple imaging modalites, 3D modelling, and making use of 3Dslicer to integrate magnetic resonance imaging (MRI), functional MRI (fMRI), computed tomography (CT), 3D electrode models, vasculature, and any relevant and useful information to be used in planning electrode placement such as for brain computer interfaces. The steps involve multiple software packages (listed below), most of which are open-source. 
 
 ## Overall steps
-1) Preprocess imaging (CT, MRI, fMRI, vasculature)
+1) Preprocess DICOM imaging (CT, MRI, fMRI, vasculature)
 2) Import imaging, 3D models of the brain, 3D models of the electrodes and pedestals to 3DSlicer
-3) Co-register images to a main structural T1 MRI scan and use this transform to 
+3) Co-register images to a main structural T1 MRI scan and use this transform to coregister everything to the same 3D space
+4) 'Place' the electrodes, wires, pedastals, and craniotomy in 3Dslicer in pre-operative planning
+5) 3D print output brains and skulls (with and without planned craniotomy)
+6) Export planned locations with 3D models to DICOM using Karawun and upload DICOMS to Brainlab for use in the operating room as well as a display of the 3Dslicer Scene
 
 ## Useful packages:
 - Gifti library for MATLAB
@@ -38,13 +42,14 @@ The below data is the 3D reconstruction of the MNI brain (https://brainmap.org/t
 ## ADD Data link!
 
 ## Preprocessing steps:
-1. Identify best T1 MPRAGE structural scan
-2. Identify best T2 SPACE structrual scan
-3. recon-all with Freesurfer 7.4, apply Glasser/HCP atlas transform
-4. HCP Minimal Preprocessing Pipeline (MPP) to the preoperative MRI T1 and T2 scans (Structural Preprocessing)
-5. fMRI preprocessing
-6. Conversion of 3D surfaces to color-coded .ply files using surfaceMesh and writeSurfaceMesh
-7. Download of electrode and pedestal 3D models
+1. Convert the DICOM images to NIFTI using dcm2niix
+2. Identify best T1 MPRAGE structural scan
+3. Identify best T2 SPACE structrual scan
+4. recon-all with Freesurfer 7.4, apply Glasser/HCP atlas transform
+5. HCP Minimal Preprocessing Pipeline (MPP) to the preoperative MRI T1 and T2 scans (Structural Preprocessing)
+6. fMRI preprocessing
+7. Conversion of 3D surfaces to color-coded .ply files using surfaceMesh and writeSurfaceMesh
+8. Download of electrode and pedestal 3D models
 
 ## Within 3DSlicer:
 1. Import T1w_acpc_dc_restore.nii MRI
@@ -66,5 +71,13 @@ The below data is the 3D reconstruction of the MNI brain (https://brainmap.org/t
 17. Save volumes as NIFTI files for later DICOM conversion
 
 ## Useful file formats:
-- NIFTI: — Neuroimaging Informatics Technology Initiative- used for
-- CIFTI: — Neuroimaging Informatics Technology Initiative- used for 
+- DICOM: - Digital Imaging and Communications in Medicine is a file format and network protocol for storing and transmitting medical images and related information
+- NIFTI: — Neuroimaging Informatics Technology Initiative- data file format for saving volumes, or multiple slices into a single volume (such as MRI or CT scans)
+- CIFTI: — Connectivity Informatics Technology Initiative- data file format intended to make it easier to work with data from multiple disjoint structures at the same time (https://www.humanconnectome.org/software/workbench-command/-cifti-help)
+- GIFTI: — Geometry format under the Neuroimaging Informatics Technology- data file format designed for surface-based data.
+- Useful note: The “N” in “NIFTI” stands for “Neuroscience” and the “G” in “GIFTI” stands for “Geometry.” (https://www.sciencedirect.com/science/article/pii/S1053811922000076?via%3Dihub)
+- .ply files: — Polygon File Format or Stanford Triangle Format, is a simple way to store 3D data as a polygonal model, and the vertices can be color-coded such as with colors for the parcellations or fMRI results
+- .stl files: — data transmission format that stores 3D model information as a series of linked triangles, often used for 3D printing
+- .obj files: — geometry definition file format first developed by Wavefront Technologies for its Advanced Visualizer animation package, can be used for
+- .mgz files: — FreeSurfer volume files
+- .label files: — Label files indicating parcellations of brain regions per surface reconstruction or relative to the volume
