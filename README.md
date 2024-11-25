@@ -66,6 +66,10 @@ The below data is the 3D reconstruction of the MNI brain (https://brainmap.org/t
 16. For Brainlab visibility, convert Utah arrays into spheres or cubes
 17. Save volumes as NIFTI files for later DICOM conversion
 
+## Karawun and BrainLab import
+1. Take the NIFTI output from 3Dslicer and convert to DICOMs using Karawun instructions (example script included, https://developmentalimagingmcri.github.io/karawun/)
+2. server -> Upload to VISAGE -> Push to Brainlab within VISAGE -> load files and folders into the BrainLab machine being used in the OR -> load the objects, scans, and views in order -> coregister the CT and/or MRIs to the patient either via fiducials skull landmarks
+
 ## Useful Software tutorials:
 ### 3D slicer-
 - Download 3D slicer: https://www.slicer.org/
