@@ -83,7 +83,7 @@ The below data is the 3D reconstruction of the MNI brain (https://brainmap.org/t
 - Download freesurfer: https://surfer.nmr.mgh.harvard.edu/fswiki
 - Website tutorials: https://surfer.nmr.mgh.harvard.edu/fswiki/Tutorials
 
-### HCP Procelling-
+### HCP Processing-
 - Download: https://github.com/Washington-University/HCPpipelines
 - Steps: https://github.com/Washington-University/HCPpipelines/wiki/Installation-and-Usage-Instructions
 
