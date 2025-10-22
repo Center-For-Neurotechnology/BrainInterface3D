@@ -34,7 +34,7 @@ https://github.com/rordenlab/dcm2niix
 https://github.com/simonoxen/SlicerANTs
 
 ## Useful data for testing the pipeline:
-The data included is the 3D reconstruction of the MNI brain (https://brainmap.org/training/BrettTransform.html) with additional models of the Utah array, pedestals, a morphed post-contrast MRI to MNI space (for the vasculature), and other detailed models are included for 3D reconstructions for planning. The data also include a model CT volume derived from the MNI brain.
+The data included is the 3D reconstruction of the MNI brain (https://brainmap.org/training/BrettTransform.html or https://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009) with additional models of the Utah array, pedestals, a morphed post-contrast MRI to MNI space (for the vasculature), and other detailed models are included for 3D reconstructions for planning. The data also include a model CT volume derived from the MNI brain.
 
 ## Preprocessing steps:
 1. Convert the MRI, fMRI, and CT DICOM images to NIFTI using dcm2niix or any other toolbox
@@ -102,3 +102,6 @@ The data included is the 3D reconstruction of the MNI brain (https://brainmap.or
 - It helps to organize the files within 3Dslicer into folders hierarchically as every loaded file goes to the end of the list. Organizing all the models into one folder and the transforms into another, and so on, helps to quickly navigate to the right image and overlay to check locations in close to real time.
 - It is worthwhile to save a new folder and Slicer Scene per change to the plan or for different plans (Plan A-C) so that electrode locations could be separately viewed and checked against one another as well as track past plans.
 - Useful note: The “N” in “NIFTI” stands for “Neuroscience” and the “G” in “GIFTI” stands for “Geometry.” (https://www.sciencedirect.com/science/article/pii/S1053811922000076?via%3Dihub)
+
+<img width="2061" height="1276" alt="MNIDemo-Scene" src="https://github.com/user-attachments/assets/f8168250-6f0e-454f-b8d7-dc93ae9c3f64" />
+
