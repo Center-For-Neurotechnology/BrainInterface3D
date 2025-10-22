@@ -34,8 +34,7 @@ https://github.com/rordenlab/dcm2niix
 https://github.com/simonoxen/SlicerANTs
 
 ## Useful data for testing the pipeline:
-The below data is the 3D reconstruction of the MNI brain (https://brainmap.org/training/BrettTransform.html) with additional models of the Utah array, pedestals, a morphed post-contrast MRI to MNI space (for the vasculature), and other detailed models are included for 3D reconstructions for planning. The data also include a model CT volume derived from the MNI brain.
-## ADD Data link!
+The data included is the 3D reconstruction of the MNI brain (https://brainmap.org/training/BrettTransform.html) with additional models of the Utah array, pedestals, a morphed post-contrast MRI to MNI space (for the vasculature), and other detailed models are included for 3D reconstructions for planning. The data also include a model CT volume derived from the MNI brain.
 
 ## Preprocessing steps:
 1. Convert the MRI, fMRI, and CT DICOM images to NIFTI using dcm2niix or any other toolbox
