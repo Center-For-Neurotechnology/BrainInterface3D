@@ -99,6 +99,11 @@ https://www.dropbox.com/scl/fo/8zm1pg3f8wlmrj2noygtu/AO71cEXsEiqXnvAJbMow_Xw?rlk
 - .label files: — Label files indicating parcellations of brain regions per surface reconstruction or relative to the volume
 - Handy BALSA description of these file formats and HCP ouputs: https://balsa.wustl.edu/about/fileTypes
 
+## Applying atlases
+- Some steps involved applying HCP-MMP1.0 labels projected on fsaverage within Freesurfer 7.4 or within HCP (wbcommand), some of which is included in text files above.
+- Further information and better descriptions including the lh.HCPMMP1.annot and rh.HCPMMP1.annot files are listed here (which includes wbcommand and Freesurfer commands): https://figshare.com/articles/dataset/HCP-MMP1_0_projected_on_fsaverage/3498446
+- and here: https://figshare.com/articles/dataset/HCP-MMP1_0_volumetric_NIfTI_masks_in_native_structural_space/4249400
+
 ## Tips:
 - It helps to organize the files within 3Dslicer into folders hierarchically as every loaded file goes to the end of the list. Organizing all the models into one folder and the transforms into another, and so on, helps to quickly navigate to the right image and overlay to check locations in close to real time.
 - It is worthwhile to save a new folder and Slicer Scene per change to the plan or for different plans (Plan A-C) so that electrode locations could be separately viewed and checked against one another as well as track past plans.
