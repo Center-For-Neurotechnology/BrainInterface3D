@@ -1,0 +1,34 @@
+# The below commands are useful steps to apply the lh.HCPMMP1.annot and rh.HCPMMP1.annot
+# files to the participant (subject) Freesurfer output. 
+
+# Further information and better descriptions including the lh.HCPMMP1.annot and rh.HCPMMP1.annot files are listed here:
+# https://figshare.com/articles/dataset/HCP-MMP1_0_projected_on_fsaverage/3498446
+# which includes wbcommand and Freesurfer commands
+# and here:
+# https://figshare.com/articles/dataset/HCP-MMP1_0_volumetric_NIfTI_masks_in_native_structural_space/4249400
+
+# Replace the 'localSubj' with your participant designation and 
+# make sure the lh.HCPMMP1.annot files are in your main Freesurfer 
+# folder (or know where those files are) as they are accessed to map to the surfer output.
+
+tcsh
+setenv SUBJECTS_DIR ${PWD}
+setenv SUBJECT localSubj_SurferOutput
+
+# If the subject freesurfer segmentation is not in $SUBJECTS_DIR, create a link first
+# ln -s "/home/ftadel/IntrAnat/localSubj/XXXXXXXX/freesurfer" $subdir
+
+# Project annot files from fsaverage to subject (left and right hemispheres separately)
+mri_surf2surf --srcsubject fsaverage --trgsubject $SUBJECT --hemi lh   --sval-annot /usr/local/freesurfer/7.4.1/lh.HCPMMP1.annot  --tval $SUBJECTS_DIR/$SUBJECT/label/lh.HCPMMP1.annot
+mri_surf2surf --srcsubject fsaverage --trgsubject $SUBJECT --hemi rh   --sval-annot /usr/local/freesurfer/7.4.1/rh.HCPMMP1.annot  --tval $SUBJECTS_DIR/$SUBJECT/label/rh.HCPMMP1.annot
+
+# Convert from .annot to aseg.mgz volume (left hemi = original labels ; right hemi = 2000 + original labels)
+mri_surf2volseg --o $SUBJECTS_DIR/$SUBJECT/mri/HCP-MMP1+aseg.mgz --label-cortex --i $SUBJECTS_DIR/$SUBJECT/mri/aseg.mgz --threads 1 --lh-annot $SUBJECTS_DIR/$SUBJECT/label/lh.HCPMMP1.annot 1000 --lh-cortex-mask $SUBJECTS_DIR/$SUBJECT/label/lh.cortex.label --lh-white $SUBJECTS_DIR/$SUBJECT/surf/lh.white --lh-pial $SUBJECTS_DIR/$SUBJECT/surf/lh.pial --rh-annot $SUBJECTS_DIR/$SUBJECT/label/rh.HCPMMP1.annot 2000 --rh-cortex-mask $SUBJECTS_DIR/$SUBJECT/label/rh.cortex.label --rh-white $SUBJECTS_DIR/$SUBJECT/surf/rh.white --rh-pial $SUBJECTS_DIR/$SUBJECT/surf/rh.pial 
+
+# Constrain to cortical ribbon (and remove the rest of the ASEG stuff)
+mri_concat --combine --i $SUBJECTS_DIR/$SUBJECT/mri/lh.ribbon.mgz --i $SUBJECTS_DIR/$SUBJECT/mri/rh.ribbon.mgz --o $SUBJECTS_DIR/$SUBJECT/mri/ribbon_lr.mgz
+mri_mask $SUBJECTS_DIR/$SUBJECT/mri/HCP-MMP1+aseg.mgz $SUBJECTS_DIR/$SUBJECT/mri/ribbon_lr.mgz $SUBJECTS_DIR/$SUBJECT/mri/HCP-MMP1.mgz
+
+# Delete link if you created one
+rm $SUBJECTS_DIR
+
