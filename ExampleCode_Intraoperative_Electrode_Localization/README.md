@@ -1,4 +1,6 @@
-Below are useful commands used in the intraoperative code pipeline:
+## Below are useful commands used in the intraoperative code pipeline:
+<img width="2884" height="778" alt="rect5" src="https://github.com/user-attachments/assets/c76225af-9ec0-47b5-8b27-9936c9bcf5d5" />
+
 ____________________________________________________________________
 
 ## Running MiDaS 
