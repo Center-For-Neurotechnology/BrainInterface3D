@@ -1,13 +1,16 @@
 # BrainInterface3D
 BrainInterface3D is a modular pipeline incorporating multiple imaging modalites, 3D modelling, and making use of 3Dslicer to integrate magnetic resonance imaging (MRI), functional MRI (fMRI), computed tomography (CT), 3D electrode models, vasculature, and any relevant and useful information to be used in planning electrode placement such as for brain computer interfaces. The steps involve multiple software packages (listed below), most of which are open-source. 
 
+Further steps can be taken to use this code for intraoperative mapping of electrode placement such as resective epilepsy or tumor surgeries. Most of the steps are either the same or slightly adjusted and have been applied to a large data set of resective tumor and epilepsy cases as well as reconstructing electrode placement for deep brain stimulation (DBS) surgeries for movement disorder. 
+
 ## Overall steps
 1) Preprocess DICOM imaging (CT, MRI, fMRI, vasculature)
 2) Import imaging, 3D models of the brain, 3D models of the electrodes and pedestals to 3DSlicer
 3) Co-register images to a main structural T1 MRI scan and use this transform to coregister everything to the same 3D space
-4) 'Place' the electrodes, wires, pedastals, and craniotomy in 3Dslicer in pre-operative planning
+4) 'Place' the electrodes, wires, pedastals, and craniotomy in 3Dslicer or Blender in pre-operative planning or postoperative device mapping
 5) 3D print output brains and skulls (with and without planned craniotomy)
-6) Export planned locations with 3D models to DICOM using Karawun and upload DICOMS to Brainlab for use in the operating room as well as a display of the 3Dslicer Scene
+6) (Preoperative) Export planned locations with 3D models to DICOM using Karawun and upload DICOMS to Brainlab for use in the operating room as well as a display of the 3Dslicer Scene
+7) (Postoperative) Export electrode contact locations and pathologies (if needed) relative to the reference scan and compare distances with the the neurophysiological signals
 
 ## Useful packages:
 - Gifti library for MATLAB
@@ -43,17 +46,18 @@ https://www.dropbox.com/scl/fo/8zm1pg3f8wlmrj2noygtu/AO71cEXsEiqXnvAJbMow_Xw?rlk
 1. Convert the MRI, fMRI, and CT DICOM images to NIFTI using dcm2niix or any other toolbox such as Mango (https://mangoviewer.com/mango.html)
 2. Identify best T1 MPRAGE structural scan
 3. Identify best T2 SPACE structural scan
-4. recon-all with Freesurfer 7.4, apply Glasser/HCP atlas transform
-5. HCP Minimal Preprocessing Pipeline (MPP) to the preoperative MRI T1 and T2 scans (Structural Preprocessing)
-6. fMRI preprocessing
-7. Conversion of 3D surfaces to color-coded .ply files using surfaceMesh and writeSurfaceMesh (MATLAB 2022b and newer)
-8. Download of electrode and pedestal 3D models
+4. In the case of pathology, identify and coregister the best FLAIR and post-contrast T1 scans
+5. recon-all with Freesurfer 7.4, apply Glasser/HCP atlas transform
+6. HCP Minimal Preprocessing Pipeline (MPP) to the preoperative MRI T1 and T2 scans (Structural Preprocessing)
+7. fMRI preprocessing
+8. Conversion of 3D surfaces to color-coded .ply files using surfaceMesh and writeSurfaceMesh (MATLAB 2022b and newer)
+9. Download of electrode and pedestal 3D models
 
 ## Within 3DSlicer:
 1. Import T1w_acpc_dc_restore.nii MRI  (in the HCP output folder: )
 2. Import CT 
 3. Import FreeSurfer T1.mgz MRI used for fMRI analysis
-4. Import Post-contrast MRI
+4. Import Post-contrast MRI (and FLAIR if needed)
 5. Coregister everything to T1w_acpc_dc_restore.nii (in the HCP output) with General Registration (ANTs) module (SlicerANTS, https://github.com/simonoxen/SlicerANTs), save and rename each Transform
 6. Import 3D models (.stl, .ply, or .obj) of Utah arrays and pedestals
 7. Import 3D surfaces as models with color coded labelling, such as the HCP parcellations, the fMRI color coding, or other labels as needed
@@ -62,11 +66,13 @@ https://www.dropbox.com/scl/fo/8zm1pg3f8wlmrj2noygtu/AO71cEXsEiqXnvAJbMow_Xw?rlk
 10. Move the 3D device models to the right locations on the coregistered brain and skull, save and rename each transform
 11. Segment bone to create both a model and a segmentation in 3D
 12. Segment vessels or use the vascular toolbox
-13. Make a copy of the segmented skull and add a ‘craniotomy’ in the planning
-14. Use Markers in 3Dslicer to create curved lines for the wires, turning on the line measure feature
-15. Convert the surface models into segmentations and then save them as NIFTI models for later DICOM conversion
-16. For Brainlab visibility, convert Utah arrays into spheres or cubes
-17. Save volumes as NIFTI files for later DICOM conversion
+13. Segment pathologies of interest such as tumor, edema, etc.
+14. Make a copy of the segmented skull and add a ‘craniotomy’ in the planning
+15. Make a copy of the segmented skull, vessels, pathology, and brain surfaces as Models, save to PLY file, and load files into Blender
+16. Use Markers in 3Dslicer to create curved lines for the wires, turning on the line measure feature
+17. Convert the surface models into segmentations and then save them as NIFTI models for later DICOM conversion (for BrainLab)
+18. For Brainlab visibility, convert Utah arrays into spheres or cubes
+19. Save volumes as NIFTI files for later DICOM conversion
 
 ## Karawun and BrainLab import
 1. Take the NIFTI output from 3Dslicer and convert to DICOMs using Karawun instructions (example script included, https://developmentalimagingmcri.github.io/karawun/)
