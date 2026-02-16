@@ -28,6 +28,8 @@ https://github.com/Washington-University/HCPpipelines
 https://www.slicer.org/ 
 - Blender
 https://www.blender.org/
+- Mango
+https://mangoviewer.com/mango.html
 - dcm2niix (can use the downloadable executable)
 https://github.com/rordenlab/dcm2niix
 - SlicerANTS (used for automatic image co-registration and can be added via the Extensions Manager in 3DSlicer)
@@ -38,7 +40,7 @@ The data included is the 3D reconstruction of the MNI brain (https://brainmap.or
 https://www.dropbox.com/scl/fo/8zm1pg3f8wlmrj2noygtu/AO71cEXsEiqXnvAJbMow_Xw?rlkey=ta4s0azxmd7uunf5o3uyjmfq9&dl=0
 
 ## Preprocessing steps:
-1. Convert the MRI, fMRI, and CT DICOM images to NIFTI using dcm2niix or any other toolbox
+1. Convert the MRI, fMRI, and CT DICOM images to NIFTI using dcm2niix or any other toolbox such as Mango (https://mangoviewer.com/mango.html)
 2. Identify best T1 MPRAGE structural scan
 3. Identify best T2 SPACE structural scan
 4. recon-all with Freesurfer 7.4, apply Glasser/HCP atlas transform
