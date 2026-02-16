@@ -48,11 +48,12 @@ def export_vertex_groups_and_world_coordinates(obj, filepath):
 # Get the active object in the scene (ensure it's a mesh)
 obj = bpy.context.active_object
 if obj:
-#    export_vertex_groups_and_world_coordinates(obj, "V:/IntraoperativeRecordings/Data_Recordings/TMG35/ReconLocations/FileOutputs/TMG35exportClinicalElectrodes1.csv")
-#    export_vertex_groups_and_world_coordinates(obj, "V:/IntraoperativeRecordings/Data_Recordings/TMG35/ReconLocations/FileOutputs/TMG35exportClinicalElectrodes2.csv")
-    export_vertex_groups_and_world_coordinates(obj, "V:/IntraoperativeRecordings/Data_Recordings/TMG35/ReconLocations/FileOutputs/TMG35exportResearchElectrodes1.csv")
-#    export_vertex_groups_and_world_coordinates(obj, "V:/IntraoperativeRecordings/Data_Recordings/TMG35/ReconLocations/FileOutputs/TMG35exportResearchElectrodes2.csv")    
-#    export_vertex_groups_and_world_coordinates(obj, "V:/IntraoperativeRecordings/Data_Recordings/TMG35/ReconLocations/FileOutputs/TMG35exportResearchElectrodes3.csv") 
-#    export_vertex_groups_and_world_coordinates(obj, "V:/IntraoperativeRecordings/Data_Recordings/TMG35/ReconLocations/FileOutputs/TMG35exportResearchElectrodes4.csv") 
+#    export_vertex_groups_and_world_coordinates(obj, "V:/IntraoperativeRecordings/Data_Recordings/IP35/ReconLocations/FileOutputs/IP35exportClinicalElectrodes1.csv")
+#    export_vertex_groups_and_world_coordinates(obj, "V:/IntraoperativeRecordings/Data_Recordings/IP35/ReconLocations/FileOutputs/IP35exportClinicalElectrodes2.csv")
+    export_vertex_groups_and_world_coordinates(obj, "V:/IntraoperativeRecordings/Data_Recordings/IP35/ReconLocations/FileOutputs/IP35exportResearchElectrodes1.csv")
+#    export_vertex_groups_and_world_coordinates(obj, "V:/IntraoperativeRecordings/Data_Recordings/IP35/ReconLocations/FileOutputs/IP35exportResearchElectrodes2.csv")    
+#    export_vertex_groups_and_world_coordinates(obj, "V:/IntraoperativeRecordings/Data_Recordings/IP35/ReconLocations/FileOutputs/IP35exportResearchElectrodes3.csv") 
+#    export_vertex_groups_and_world_coordinates(obj, "V:/IntraoperativeRecordings/Data_Recordings/IP35/ReconLocations/FileOutputs/IP35exportResearchElectrodes4.csv") 
 else:
     print("No active object found.")
+
