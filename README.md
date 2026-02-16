@@ -117,5 +117,8 @@ https://www.dropbox.com/scl/fo/8zm1pg3f8wlmrj2noygtu/AO71cEXsEiqXnvAJbMow_Xw?rlk
 - It is worthwhile to save a new folder and Slicer Scene per change to the plan or for different plans (Plan A-C) so that electrode locations could be separately viewed and checked against one another as well as track past plans.
 - Useful note: The “N” in “NIFTI” stands for “Neuroscience” and the “G” in “GIFTI” stands for “Geometry.” (https://www.sciencedirect.com/science/article/pii/S1053811922000076?via%3Dihub)
 
+<img width="2884" height="778" alt="rect5" src="https://github.com/user-attachments/assets/72cfd180-2ece-427d-9b35-87bc64b79cec" />
+
+
 <img width="2061" height="1276" alt="MNIDemo-Scene" src="https://github.com/user-attachments/assets/f8168250-6f0e-454f-b8d7-dc93ae9c3f64" />
 
