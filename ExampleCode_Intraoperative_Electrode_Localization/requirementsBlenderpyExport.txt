@@ -1,0 +1,3 @@
+To run the example .py files (ExportBlenderVerticesWorldViewDeID.py), there are no added dependencies outside of installing Blender (tested in version 3.8 and above)
+
+Blender https://www.blender.org/
