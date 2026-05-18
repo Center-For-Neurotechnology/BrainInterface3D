@@ -50,6 +50,10 @@ ____________________________________________________________________
 
 ## The below code is to take a list of channel locations in RAS space and convert them from native space (e.g. T1.mgz) to MNI space: 
 
+First download the MNI brain (https://brainmap.org/training/BrettTransform.html or https://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009) with the T1 needed from the participant. This also requires a .csv or .xlsx code with the RAS coordinates in 3D space of each electrode contact. Its output includes the morphed electrode contact locations to MNI space and the morphed participant T1 to MNI space.
+
+This code uses fieldtrip-20230602 but has been tested with later versions. 
+
 example_mainMNIIntraopDeID.m
 ____________________________________________________________________
 
