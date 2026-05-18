@@ -1,6 +1,15 @@
 Install pymeshlab as per the instructions
 https://github.com/cnr-isti-vclab/PyMeshLab
 
+## Installation instructions for geodesic/pymeshlab code for running python within MATLAB (the latest version of pymeshlab has issues), for running distancePathologyMeasuresgeodesic.m and the underlying extract_geodesic_distances.py code: 
+
+pip uninstall pymeshlab
+pip install pymeshlab==2023.12.post1
+pip install pymeshlab==2023.12
+
+pip install pandas
+pip install numpy
+
 Other requirements for the 'extract_geodesic_distances.py' code:
 numpy 
 sys
