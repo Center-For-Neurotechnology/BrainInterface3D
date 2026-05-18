@@ -1,11 +1,16 @@
 clear all
 % Get the gifti toolbox
-addpath(genpath('F:\Dropbox (Personal)\Dropbox (Personal)\ACPProjects\CashLab_DataOrganization\ReconPipeline\gifti-main'))
+
+GIFTI_toolbox_path='pathtoGiftiToolbox\gifti-main';
+pathtoDataOutput="pathtoGiftiToolbox";
+pathtoHCPOutput="pathtoHCPOutput";
+
+addpath(genpath(GIFTI_toolbox_path))
 
 % Import the faces and vertices
-gs = gifti(['F:\Dropbox (Partners HealthCare)\PlanningImages\HCPOutput\MRI_HCP_PtScan2\T1w\Native\MRI_HCP_PtScan2.L.pial.native.surf.gii']);
+gs = gifti([pathtoHCPOutput,'\PtDesignation\T1w\Native\PtDesignation.L.pial.native.surf.gii']);
 % Import the labels
-cs = gifti(['N:\BrainGate_MRI\MRI_HCP_xxxxxxxx\HCPOutput\MRI_HCP_PtScan2\T1w\Native\MRI_HCP_PtScan2.left.native.label.gii']);
+cs = gifti([pathtoHCPOutput,'\PtDesignation\T1w\Native\PtDesignation.left.native.label.gii']);
 
 vertices=double(gs.vertices);
 faces=double(gs.faces);
@@ -83,5 +88,5 @@ mesh.VertexColors=cs.labels.rgba(COL5,1:3);
 surfaceMeshShow(mesh)
 
 %% Save the .ply file with the colors tied to the vertices
-% writeSurfaceMesh(mesh,"F:\Dropbox (Partners HealthCare)\PlanningImages\3DStruct\ManifoldMeshSubset.ply")
+% writeSurfaceMesh(mesh,[pathtoDataOutput,"\ManifoldMeshSubset.ply"])
 
