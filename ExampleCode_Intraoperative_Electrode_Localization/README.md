@@ -25,7 +25,7 @@ ____________________________________________________________________
 OS command window where the Install Utilities (https://mangoviewer.com/mango_guide_utilities.html) is installed:
 
 ```
-$ mango-convert2nii -a Y:\IntraOp_Micro\IP35\IP35_Notes_and_Images\IP35CTPostop\IMAGES\*
+$ mango-convert2nii -a pathtoImagesDICOMOutputs\IP35CTPostop\IMAGES\*
 
 ```
 ____________________________________________________________________
@@ -40,7 +40,7 @@ Run the below command (replacing the directory with the correct location.
 - The brain surfaces and electrode locations should all be in the same relative RAS space.
 
 ```
-PythonCode='V:\IntraoperativeRecordings\Code\GeodesicMapping\extract_geodesic_distances.py';
+PythonCode=[pathToGeodesicMappingCode,'\GeodesicMapping\extract_geodesic_distances.py'];
 
 pyrunfile([PythonCode,' ',FiLoadRight,' ',num2str(ChLocations(ch,1)),' ',num2str(ChLocations(ch,2)),' ',num2str(ChLocations(ch,3)),' ',num2str(ch)])
 % Variable names- FiLoadRight- file of the right or left pial surface to load; ChLocations(ch,1:3) are the R, A, S locations relative to the brain, ch is the channel number
