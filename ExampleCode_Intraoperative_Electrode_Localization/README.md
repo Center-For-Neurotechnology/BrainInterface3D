@@ -48,6 +48,11 @@ pyrunfile([PythonCode,' ',FiLoadRight,' ',num2str(ChLocations(ch,1)),' ',num2str
 ```
 ____________________________________________________________________
 
+## The below code is to take a list of channel locations in RAS space and convert them from native space (e.g. T1.mgz) to MNI space: 
+
+example_mainMNIIntraopDeID.m
+____________________________________________________________________
+
 ## Exporting Blender meshes into .csv files with vertice mapped in RAS space for later data processing. 
 
 Within the tab of Blender of your file, load the 'ExportBlenderVerticesWorldViewDeID.py' py file, select the electrode of interest, change the csv file names and locations, and hit 'Run' (play button):
