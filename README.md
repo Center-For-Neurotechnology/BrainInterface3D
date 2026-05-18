@@ -31,13 +31,25 @@ https://github.com/Washington-University/HCPpipelines
 https://www.slicer.org/ 
 - Blender
 https://www.blender.org/
-- Mango
+- Mango 
 https://mangoviewer.com/mango.html
 - dcm2niix (can use the downloadable executable)
 https://github.com/rordenlab/dcm2niix
 - SlicerANTS (used for automatic image co-registration and can be added via the Extensions Manager in 3DSlicer)
 https://github.com/simonoxen/SlicerANTs
+- SlicerFreeSurfer (for reading and working with FreeSurfer output)
+https://github.com/PerkLab/SlicerFreeSurfer
 
+## This pipeline has been tested with the following software versions:
+- Fieldtrip version fieldtrip-20230602 onward
+- Freesurfer 7.2, 7.4, and 8.2 
+- Mango 4.1
+- 3DSlicer 5.6.2 onward
+- MiDaS 3.1
+- MATLAB 2022b - 2025b and multiple versions in between
+- Blender 3.2, 3.8, 4.2 (anything past version 3.0)
+- In terms of operating systems, we utilized Windows 10, 11, Ubuntu 20, 22, and 24 (including using WSL) as appropriate to different software packages (e.g. Freesurfer could only be used in the Linux installs in this case)
+  
 ## Useful data for testing the pipeline:
 The data included is the 3D reconstruction of the MNI brain (https://brainmap.org/training/BrettTransform.html or https://www.bic.mni.mcgill.ca/ServicesAtlases/ICBM152NLin2009) with additional models of the Utah array, pedestals, a morphed post-contrast MRI to MNI space (for the vasculature), and other detailed models are included for 3D reconstructions for planning. The data also include a model CT volume derived from the MNI brain:
 https://www.dropbox.com/scl/fo/8zm1pg3f8wlmrj2noygtu/AO71cEXsEiqXnvAJbMow_Xw?rlkey=ta4s0azxmd7uunf5o3uyjmfq9&dl=0
